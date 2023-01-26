@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj/screens/login.dart';
 import 'package:proj/utility/colors.dart';
 
 class Welcome extends StatelessWidget {
@@ -91,16 +92,24 @@ class Welcome extends StatelessWidget {
                 width: 250,
                 child: ElevatedButton(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text("Get Started"),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                      ),
                       Icon(Icons.arrow_right_alt)
                     ],
                   ),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
                           Color(colorsconst.primarycolor))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login()),
+                    );
+                  },
                 ),
               ),
             )
