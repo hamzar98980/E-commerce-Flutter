@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "917710760722",
+    "project_id": "ststore-ec806",
+    "storage_bucket": "ststore-ec806.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917710760722:android:652227d318b802b432e1cb",
+        "android_client_info": {
+          "package_name": "com.example.proj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917710760722-q5ttt9q9tnm4nb263bep3gl957nkjdb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNt6ev8VsHQazu162Me12gq0xNqe9r6ZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917710760722-q5ttt9q9tnm4nb263bep3gl957nkjdb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

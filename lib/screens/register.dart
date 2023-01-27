@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:proj/utility/colors.dart';
 import 'package:proj/utility/stringtext.dart';
@@ -12,6 +13,31 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   bool isObscure = true;
   bool is_checked = false;
+
+  TextEditingController email = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  Registeruser() async {
+    try {
+      final Credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: email.text, password: password.text);
+      if (Credential == true) {
+        print("done");
+      } else {
+        print("false");
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +92,9 @@ class _RegisterState extends State<Register> {
                     child: Container(
                       height: 40,
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: const TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
+                      child: TextField(
+                        controller: email,
+                        decoration: const InputDecoration(
                           hintText: 'Email',
                           // labelText: "Username",
                           hintStyle: TextStyle(
@@ -97,9 +123,9 @@ class _RegisterState extends State<Register> {
                     child: Container(
                       height: 40,
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: const TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
+                      child: TextField(
+                        controller: username,
+                        decoration: const InputDecoration(
                           hintText: 'Username',
                           // labelText: "Username",
                           hintStyle: TextStyle(
@@ -130,6 +156,7 @@ class _RegisterState extends State<Register> {
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: TextField(
                         obscureText: isObscure,
+                        controller: password,
                         decoration: InputDecoration(
                           hintText: 'Password',
                           hintStyle: const TextStyle(
@@ -198,7 +225,9 @@ class _RegisterState extends State<Register> {
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
                                 Color(colorsconst.primarycolor))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Registeruser();
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
