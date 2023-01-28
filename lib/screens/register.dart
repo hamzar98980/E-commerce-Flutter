@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:proj/screens/home.dart';
 import 'package:proj/utility/colors.dart';
 import 'package:proj/utility/stringtext.dart';
 
@@ -16,18 +17,17 @@ class _RegisterState extends State<Register> {
 
   TextEditingController email = TextEditingController();
   TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
+  TextEditingController pass = TextEditingController();
 
   Registeruser() async {
     try {
       final Credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-              email: email.text, password: password.text);
-      if (Credential == true) {
-        print("done");
-      } else {
-        print("false");
-      }
+              email: email.text, password: pass.text);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Home()),
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -156,7 +156,7 @@ class _RegisterState extends State<Register> {
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: TextField(
                         obscureText: isObscure,
-                        controller: password,
+                        controller: pass,
                         decoration: InputDecoration(
                           hintText: 'Password',
                           hintStyle: const TextStyle(

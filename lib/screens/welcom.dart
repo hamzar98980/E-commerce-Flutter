@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj/screens/home.dart';
 import 'package:proj/screens/login.dart';
 import 'package:proj/utility/colors.dart';
 
@@ -107,7 +108,7 @@ class Welcome extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const Login()),
+                      MaterialPageRoute(builder: (context) => const Home()),
                     );
                   },
                 ),
