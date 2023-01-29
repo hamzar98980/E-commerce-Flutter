@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:proj/utility/colors.dart';
+import 'package:proj/utility/stringtext.dart';
 
 import '../utility/componenets.dart';
 
-class Product extends StatelessWidget {
+class Product extends StatefulWidget {
   const Product({super.key});
 
+  @override
+  State<Product> createState() => _ProductState();
+}
+
+class _ProductState extends State<Product> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
+        leading: const Icon(
           Icons.arrow_back,
           color: Colors.black,
         ),
+        actions: const [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.menu_open_outlined,
+              color: Colors.black,
+            ),
+          )
+        ],
+
         // actions: [Icon(Icons.arrow_back)],
         backgroundColor: Colors.white,
         elevation: 0,
@@ -36,54 +52,7 @@ class Product extends StatelessWidget {
                 )
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.45,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      // color: Colors.grey,
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.28,
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        decoration: BoxDecoration(
-                            color: Color(colorsconst.concolor),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20))),
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: Slider1(),
-                      // child: SingleChildScrollView(
-                      //   scrollDirection: Axis.horizontal,
-                      //   child: Row(
-                      //     children: [
-                      //       Container(
-                      //         height: MediaQuery.of(context).size.height * 0.4,
-                      //         width: MediaQuery.of(context).size.width * 0.9,
-                      //         child: Image.asset("assets/Images/mic.png"),
-                      //       ),
-                      //       Container(
-                      //         height: MediaQuery.of(context).size.height * 0.4,
-                      //         width: MediaQuery.of(context).size.width * 0.9,
-                      //         child: Image.asset("assets/Images/mic.png"),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                    )
-                  ],
-                )
-              ],
-            )
+            Productview(),
           ],
         ),
       ),

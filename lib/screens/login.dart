@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj/screens/home.dart';
 import 'package:proj/screens/register.dart';
 import 'package:proj/utility/colors.dart';
 import 'package:proj/utility/stringtext.dart';
@@ -143,7 +144,13 @@ class _LoginState extends State<Login> {
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                               Color(colorsconst.primarycolor))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Home(),
+                            ));
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [

@@ -36,7 +36,7 @@ class Page1 extends StatelessWidget {
                   InkWell(
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.4,
-                      width: MediaQuery.of(context).size.width * 0.6,
+                      width: MediaQuery.of(context).size.width * 0.65,
                       child: Image.asset("assets/Images/Item.png"),
                     ),
                     onTap: () {
@@ -44,15 +44,27 @@ class Page1 extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => Product()));
                     },
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Image.asset("assets/Images/Item.png"),
+                  InkWell(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.65,
+                      child: Image.asset("assets/Images/Item.png"),
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Product()));
+                    },
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    child: Image.asset("assets/Images/Item.png"),
+                  InkWell(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.65,
+                      child: Image.asset("assets/Images/Item.png"),
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Product()));
+                    },
                   ),
                 ],
               ),
@@ -80,7 +92,7 @@ class Page1 extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.35,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.45,
                       child: Image.asset("assets/Images/recommend_2.png"),
                     ),
                   ),
@@ -88,7 +100,7 @@ class Page1 extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.35,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.45,
                       child: Image.asset("assets/Images/recommend.png"),
                     ),
                   ),
@@ -96,7 +108,7 @@ class Page1 extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.35,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.45,
                       child: Image.asset("assets/Images/recommend_2.png"),
                     ),
                   ),
@@ -136,7 +148,7 @@ class _Slider1State extends State<Slider1> {
     return Column(
       children: [
         Container(
-          height: 260,
+          height: 250,
           width: double.infinity,
           child: PageView(
             children: _demo,
@@ -153,6 +165,71 @@ class _Slider1State extends State<Slider1> {
           count: _demo.length,
           index: pageIndex,
         ),
+      ],
+    );
+  }
+}
+
+class Productview extends StatelessWidget {
+  const Productview({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.55,
+              width: MediaQuery.of(context).size.width * 0.9,
+              // color: Colors.grey,
+            ),
+            Positioned(
+              bottom: 0,
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.35,
+                width: MediaQuery.of(context).size.width * 0.9,
+                decoration: BoxDecoration(
+                    color: Color(colorsconst.concolor),
+                    borderRadius: BorderRadius.circular(25)),
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: Slider1(),
+            ),
+            Positioned(
+              bottom: 30,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0, 2, 0, 35),
+                child: Center(
+                  child: Text(
+                    Textstring.base_balance,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 25,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0, 2, 0, 13),
+                child: Center(
+                  child: Text(
+                    Textstring.invotive,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300),
+                  ),
+                ),
+              ),
+            )
+          ],
+        )
       ],
     );
   }

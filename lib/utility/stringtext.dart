@@ -6,4 +6,6 @@ class Textstring {
   static String termstext = "By creating an account, you agree to our";
   static String browsecategory = "Browse by Categories";
   static String recommend = "Recommended for You";
+  static String base_balance = "Beosound Balance";
+  static String invotive = "Innovative, wireless home speaker";
 }
