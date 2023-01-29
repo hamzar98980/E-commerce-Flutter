@@ -1,5 +1,7 @@
+import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:proj/screens/product.dart';
+import 'package:proj/utility/colors.dart';
 import 'package:proj/utility/stringtext.dart';
 
 class Page1 extends StatelessWidget {
@@ -104,6 +106,54 @@ class Page1 extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Slider1 extends StatefulWidget {
+  const Slider1({super.key});
+
+  @override
+  State<Slider1> createState() => _Slider1State();
+}
+
+class _Slider1State extends State<Slider1> {
+  List<Widget> _demo = [
+    Container(
+      height: 300,
+      width: 250,
+      child: Image.asset("assets/Images/mic.png"),
+    ),
+    Container(
+      height: 300,
+      width: 250,
+      child: Image.asset("assets/Images/mic.png"),
+    ),
+  ];
+  int pageIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 260,
+          width: double.infinity,
+          child: PageView(
+            children: _demo,
+            onPageChanged: (index) {
+              setState(() {
+                pageIndex = index;
+              });
+            },
+          ),
+        ),
+        CarouselIndicator(
+          activeColor: Color(colorsconst.primarycolor),
+          color: Colors.grey,
+          count: _demo.length,
+          index: pageIndex,
+        ),
+      ],
     );
   }
 }
